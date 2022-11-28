@@ -1,0 +1,24 @@
+.form-login{
+    max-width: 650px;
+}
+
+.btn-cadastro{
+    background-color: #614EA6;
+    color: #fff;
+    width: 100%;
+}
+
+.btn-cadastro:hover{
+    background-color: #F21667;
+    color: #fff;
+}
+
+.return-page a{
+    text-decoration: none;
+    color:rgb(0, 0, 0);
+    transition: .3s ease-in-out;
+}
+
+.return-page a:hover{
+    color: #f21667;
+}
