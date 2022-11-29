@@ -3,7 +3,7 @@ import {Link, Navigate} from 'react-router-dom';
 import {db, storage} from '../../config/firebase';
 import { useSelector } from "react-redux";
 import Navbar from "../../components/navbar";
-import { collection, doc, setDoc } from "firebase/firestore";
+import { collection, doc, setDoc, getDocs } from "firebase/firestore";
 import {ref, uploadBytes} from "@firebase/storage";
 
 function EventoCadastro(){
@@ -23,7 +23,7 @@ function cadastrar(){
     setMsgTipo(null);
     setCarregando(1);
 
-    if(!foto || !titulo || !tipo)
+    if(!foto || !titulo || !tipo || !hora || !data)
     {
         setMsgTipo('nullField');
         setCarregando(0);
@@ -43,8 +43,8 @@ function cadastrar(){
             Hora: hora,
             Foto: foto.name,
             Usuario: usuarioEmail,
-            visualizações:0,
-            publico:1,
+            Visualizacoes:0,
+            Publico:1,
             criacao: new Date()
         }).then(()=> {
             setMsgTipo('success');

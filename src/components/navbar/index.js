@@ -23,8 +23,8 @@ function Navbar(){
                       <>
                         <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
                         <li className="nav-item"><Link className="nav-link" to="eventocadastro">Publicar Evento</Link></li>
-                        <li className="nav-item"><Link className="nav-link" to="">Meus Eventos</Link></li>
-                        <li className="nav-item"><Link className="nav-link" to='/' onClick={()=>dispatch({type: 'LOG_OUT'})}>Sair</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="meuseventos">Meus Eventos</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to='/login' onClick={()=>dispatch({type: 'LOG_OUT'})}>Sair</Link></li>
                       </>
                       :
                       <>

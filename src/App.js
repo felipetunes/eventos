@@ -9,6 +9,7 @@ import NovoUsuario from "./View/usuario-novo";
 import Home from "./View/home";
 import UsuarioRecuperarSenha from "./View/usuario-recuperar-senha"
 import EventoCadastro from "./View/evento-cadastro"
+import MeusEventos from "./View/meus-eventos"
 
 function App() {
   return (
@@ -17,9 +18,10 @@ function App() {
         <Routes>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/novousuario" element={<NovoUsuario />} />
-          <Route exact path="/recuperarsenha" element={<UsuarioRecuperarSenha />} />
-          <Route exact path="/eventocadastro" element={<EventoCadastro />} />
+          <Route exact path="/novousuario" element={<NovoUsuario/>} />
+          <Route exact path="/recuperarsenha" element={<UsuarioRecuperarSenha/>} />
+          <Route exact path="/eventocadastro" element={<EventoCadastro/>} />
+          <Route exact path="/meuseventos" element={<MeusEventos/>} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -8,6 +8,17 @@
     color: #fff;
 }
 
+.btn-detalhes{
+    white-space: nowrap;
+}
+
+.viewers{
+    display:flex;
+    grid-gap:  6px;
+    align-items: center;
+    margin: 10px;
+}
+
 .card-text{
     max-height: 100px;
     overflow:hidden;
@@ -16,4 +27,9 @@
 .img-cartao{
     max-height: 200px;
     min-width: 100px;
+}
+
+.card-body{
+    max-width: 95%;
+    overflow: hidden;
 }

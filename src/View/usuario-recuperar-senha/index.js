@@ -7,19 +7,18 @@ import Navbar from "../../components/navbar";
 
 function UsuarioRecuperarSenha(){
 
-const [email, setEmail] = useState();
-const [msg,setMsg] = useState();
+    const [email, setEmail] = useState();
+    const [msg,setMsg] = useState();
 
+    function recuperarSenha(){
+        const auth = getAuth(firebase);
 
-function recuperarSenha(){
-    const auth = getAuth(firebase);
-
-    sendPasswordResetEmail(auth, email).then(resultado => {
-        setMsg('Enviamos um link no seu email para você redefinir sua senha');
-    }).catch(erro => {
-        setMsg('Verifique se o email está correto!');
-    })
-}
+        sendPasswordResetEmail(auth, email).then(res => {
+            setMsg('Enviamos um link no seu email para você redefinir sua senha');
+        }).catch(erro => {
+            setMsg('Verifique se o email está correto!');
+        })
+    }
 
     return(
         <>

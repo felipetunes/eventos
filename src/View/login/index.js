@@ -2,9 +2,13 @@ import React, {useState, useEffect} from "react";
 import './login.css';
 import {Link, Navigate} from 'react-router-dom';
 import firebase from '../../config/firebase';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+
 import Navbar from "../../components/navbar";
 import {useSelector, useDispatch} from 'react-redux';
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faSquareGooglePlus, faSquareFacebook } from "@fortawesome/free-brands-svg-icons"
 
 function Login(){
 
@@ -16,12 +20,13 @@ function Login(){
 
     const dispatch = useDispatch();
 
-    function logar(){
+    function Sign(){
 
         setCarregando(1);
         setMsgTipo(null);
 
         const auth = getAuth(firebase);
+
         signInWithEmailAndPassword(auth, email, senha)
         .then((userCredential) => {
           // Signed in
@@ -49,6 +54,48 @@ function Login(){
         });
     }
 
+    function SignWithGoogle(){
+
+        setCarregando(1);
+        setMsgTipo(null);
+
+        const auth = getAuth(firebase);
+        const provider = new GoogleAuthProvider();
+
+        signInWithPopup(auth, provider)
+        .then((res) => {
+
+            console.log(res.user)
+
+            setCarregando(0);
+            setMsgTipo('success')
+            dispatch({type: 'LOG_IN', usuarioEmail: res.user.email});
+          // ...
+        }).catch((error) => {
+            setMsg(error.message);
+        });
+    }
+
+    function SignWithFacebook(){
+        setCarregando(1);
+        setMsgTipo(null);
+        
+        const auth = getAuth(firebase);
+        const provider = new FacebookAuthProvider();
+
+        signInWithPopup(auth, provider)
+        .then((res) => {
+
+            setCarregando(0);
+            setMsgTipo('success')
+            dispatch({type: 'LOG_IN', usuarioEmail: res.user.email});
+
+        })
+        .catch((error) => {
+            setMsg(error.message);
+        });
+    }
+
     return(
         <>
         <Navbar/>
@@ -65,20 +112,27 @@ function Login(){
                     <input onChange={(e) => setSenha(e.target.value)} type="password" id="inputPassword" className="form-control my-2" placeholder="Senha"/>
                 
                     {
-                        carregando ? <div class="spinner-border text-danger" role="status"><span class="visually-hidden">Loading...</span></div>
-                            :  <button className="btn btn-lg btn-block btn-login" type="button" onClick={logar}>Logar</button>
+                        carregando ? <div className="spinner-border text-danger" role="status"><span className="visually-hidden">Loading...</span></div>
+                            :  <button className="btn btn-lg btn-block btn-login" type="button" onClick={Sign}>Logar</button>
                     }
 
-                    <div className="msg-login text-white text-center my-5">
+                    <div className="msg-login text-white text-center my-3">
                         {msgTipo === 'success' && <span style={{visibility: "visible"}}><strong>Wow! </strong>Você está conectado! </span>}
                         {msgTipo === 'erro' && <span style={{visibility: "visible"}}><strong>Ops! </strong>{msg} </span>}
                     </div>
 
-                    <div className="opcoes-login mt-5 text-center">
+                    <div className="opcoes-login mt-1 text-center">
                         <Link to='recuperarsenha' className="mx-2">Recuperar Senha</Link>
                         <span>&#9733;</span>
                         <Link to='novousuario' className="mx-2">Quero Cadastrar</Link>
                     </div>
+
+                    <button className="btn btn-lg btn-block btn-danger btn-login-social mt-5" type="button" onClick={SignWithGoogle}>
+                    <FontAwesomeIcon icon={faSquareGooglePlus} className="iconSocial"/><span className="textBtnSocial"> Logar com o Google</span>
+                    </button>
+                    <button className="btn btn-lg btn-block btn-primary btn-login-social mt-2" type="button" onClick={SignWithFacebook}>
+                    <FontAwesomeIcon icon={faSquareFacebook} className="iconSocial"/><span className="textBtnSocial"> Logar com o Facebook</span>
+                    </button>
                 </form>
             </div>
             </>
