@@ -3,42 +3,86 @@
     height: 100%;
     padding: 5%;
     margin: auto;
-    background-color:#614EA6;
 }
 
 .btn-login{
-    background-color: #ffff;
-    color: #614EA6;
+    background-color: #1aebb6;
+    color: #000000;
     width: 100%;
 }
 
 .btn-login-social{
-    width: 100%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-color: rgb(197, 193, 193);
+    background-color: white;
+    border-style: solid;
+    border-width: 1.3px;
+    box-shadow: inset -38px -59px 77px -88px rgba(0,0,0,0.53);
+}
+
+.btn-login-social:hover{
+    box-shadow: inset -28px -49px 77px -68px rgba(0,0,0,0.53);
+    border-width: 1.6px;
 }
 
 .btn-login:hover{
-    background-color: #f21667;
+    background-color: #05818f;
     color: #ffff;
 }
 
 .opcoes-login a{
     text-decoration: none;
-    color:#ffff;
+    color:black;
     transition: .3s ease-in-out;
 }
 
 .opcoes-login a:hover{
-    color: #f21667;
-}
-
-.textBtnSocial{
-    font-size: 15px;
-    vertical-align:2px;
-    margin-left: 10px;
+    color: #05818f;
 }
 
 .iconSocial{
-    height: 32px;
-    width: 32px;
-    float: left;
+    height: 22px;
+    width: 22px;
+    margin-top: 4px;
+}
+
+.showEye{
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    z-index: 1000;
+    cursor:pointer;
+}
+
+.inputsLogin{
+   position:relative;
+   margin-top: 40px;
+}
+
+.form-signin{
+    background-color: white;
+    border: 0.5px;
+    border-style:outset;
+    padding: 60px;
+    border-radius: 10px;
+}
+
+.background{
+    background: linear-gradient(0deg, rgba(193,255,239,1) 0%, rgba(26,235,182,1) 58%, rgba(0,212,255,1) 100%);
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    z-index: -10;
+    opacity: 80%;
+}
+
+.googleBtn:hover{
+    color: red;
+}
+.facebookBtn:hover{
+    color:blue;
 }

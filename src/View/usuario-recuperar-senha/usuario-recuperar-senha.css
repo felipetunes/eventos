@@ -1,10 +1,10 @@
 .btn-enviar{
-    background-color:#614EA6;
-    color:#fff;
+    background-color:#1aebb6;
+    color:rgb(0, 0, 0);
     width:100%;
 }
 
 .btn-enviar:hover{
-    background-color:#F21667;
+    background-color:#05818f;
     color: #fff;
 }

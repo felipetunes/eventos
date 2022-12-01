@@ -1,11 +1,15 @@
 
 .btn-cadastro{
-    background-color: #614EA6;
+    background-color: #1aebb6;
     color: #fff;
     width: 100%;
 }
 
 .btn-cadastro:hover{
-    background-color: #F21667;
+    background-color: #05818f;
     color: #fff;
+}
+
+.screen{
+    max-width: 420px;
 }

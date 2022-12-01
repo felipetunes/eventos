@@ -1,29 +1,57 @@
 import React, {useEffect, useState} from "react";
 import './home.css';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import Navbar from "../../components/navbar";
 import EventoCard from "../../components/evento-card";
 import {db} from '../../config/firebase';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { useSelector } from "react-redux";
 
 function Home(){
 
     const [eventos, setEventos] = useState([]);
+    const [pesquisa, setPesquisa] = useState('');
+    const { parametro } = useParams();
+    const usuarioEmail = useSelector(state => state.usuarioEmail)
     let listaeventos = [];
 
 
-async function getAllDocs(){
-    const docsSnap = await getDocs(collection(db,"eventos"));
+    async function getAllDocs(){
 
-    docsSnap.forEach((doc)=>{
-        listaeventos.push({
-            id: doc.id,
-            ...doc.data()
-        })
-    })
+        if(parametro)
+        {
 
-    setEventos(listaeventos);
-}
+            const q = query(collection(db, "eventos"), where("Usuario", "==", usuarioEmail));
+
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+                
+                if(doc.data().Titulo.indexOf(pesquisa) >= 0)
+                {
+                    listaeventos.push({
+                        id: doc.id,
+                        ...doc.data()
+                    })
+                }
+            })
+        }
+        else
+        {
+            const docsSnap = await getDocs(collection(db,"eventos"));
+            docsSnap.forEach((doc)=>{
+
+                if(doc.data().Titulo.indexOf(pesquisa) >= 0)
+                {
+                    listaeventos.push({
+                        id: doc.id,
+                        ...doc.data()
+                    })
+                }
+            })
+        }
+
+        setEventos(listaeventos);
+    }
 
     useEffect(()=>{
         getAllDocs();
@@ -32,9 +60,13 @@ async function getAllDocs(){
     return(
         <>
             <Navbar/>
-            
+
+            <div className="row p-5 text-center">
+                <h3 className="mx-auto pb-2">Eventos</h3>
+                <input onChange={(e)=> setPesquisa(e.target.value)} type="text" className="form-control" placeholder="Pesquisar evento pelo título"/>
+            </div>
             <div className="row mt-3 mx-1">
-                {eventos.map(item=><EventoCard key={item.id} titulo={item.Titulo} detalhes={item.Detalhes} visualizacoes={item.Visualizacoes}/>)}
+                {eventos.map(item=><EventoCard key={item.id} id={item.id} img={item.Foto} titulo={item.Titulo} detalhes={item.Detalhes} visualizacoes={item.Visualizacoes}/>)}
             </div>
         </>
     )

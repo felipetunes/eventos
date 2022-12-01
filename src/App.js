@@ -16,12 +16,12 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/login" element={<Login />} />
           <Route exact path="/" element={<Home />} />
+          <Route path="/eventos/:parametro" element={<Home />} />
+          <Route exact path="/login" element={<Login />} />
           <Route exact path="/novousuario" element={<NovoUsuario/>} />
           <Route exact path="/recuperarsenha" element={<UsuarioRecuperarSenha/>} />
           <Route exact path="/eventocadastro" element={<EventoCadastro/>} />
-          <Route exact path="/meuseventos" element={<MeusEventos/>} />
         </Routes>
       </BrowserRouter>
     </Provider>

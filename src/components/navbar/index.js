@@ -4,14 +4,16 @@ import {Link} from 'react-router-dom';
 
 import {useSelector, useDispatch} from 'react-redux';
 
+
 function Navbar(){
 
   const dispatch = useDispatch();
+  const photoURL = useSelector(state => state.photoURL);
 
     return(
         <nav className="navbar navbar-expand-lg bg-light">
           <div className="container-fluid">
-            <a className="navbar-brand" href="#">Eventos</a>
+            <a className="navbar-brand" to="/">Eventos</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -22,8 +24,8 @@ function Navbar(){
                 useSelector(state => state.usuarioLogado) > 0 ?
                       <>
                         <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
-                        <li className="nav-item"><Link className="nav-link" to="eventocadastro">Publicar Evento</Link></li>
-                        <li className="nav-item"><Link className="nav-link" to="meuseventos">Meus Eventos</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/eventocadastro">Publicar Evento</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/eventos/meus">Meus Eventos</Link></li>
                         <li className="nav-item"><Link className="nav-link" to='/login' onClick={()=>dispatch({type: 'LOG_OUT'})}>Sair</Link></li>
                       </>
                       :
@@ -32,10 +34,14 @@ function Navbar(){
                         <li className="nav-item"><Link to='/novousuario' className="nav-link">Cadastrar</Link></li>
                       </>      
               }
-          
+              
             </ul>
           </div>
         </div>
+        {
+                useSelector(state => state.usuarioLogado) > 0 ?
+                <img src={photoURL} alt="Foto" className="userPhoto collapse navbar-collapse" data-toggle="collapse"/>:<div></div>
+        }
       </nav>
     )
 }

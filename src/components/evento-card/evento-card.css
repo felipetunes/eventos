@@ -1,6 +1,8 @@
 .rodape-card{
     color:#614ea6;
     height:35px;
+    display:flex;
+    justify-content: space-between;
 }
 
 .btn-detalhes:hover{
@@ -9,6 +11,8 @@
 }
 
 .btn-detalhes{
+    color: white;
+    background-color:#614ea6;
     white-space: nowrap;
 }
 
@@ -16,10 +20,10 @@
     display:flex;
     grid-gap:  6px;
     align-items: center;
-    margin: 10px;
 }
 
 .card-text{
+    height: 100px;
     max-height: 100px;
     overflow:hidden;
 }
@@ -27,9 +31,15 @@
 .img-cartao{
     max-height: 200px;
     min-width: 100px;
+    border-radius: 5px;
 }
 
 .card-body{
     max-width: 95%;
+    overflow: hidden;
+}
+
+.tituloEvento{
+    max-height: 26px;
     overflow: hidden;
 }

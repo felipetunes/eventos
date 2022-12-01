@@ -3,8 +3,9 @@ import {Link, Navigate} from 'react-router-dom';
 import {db, storage} from '../../config/firebase';
 import { useSelector } from "react-redux";
 import Navbar from "../../components/navbar";
-import { collection, doc, setDoc, getDocs } from "firebase/firestore";
+import { collection, doc, addDoc, getDocs } from "firebase/firestore";
 import {ref, uploadBytes} from "@firebase/storage";
+import './evento-cadastro.css'
 
 function EventoCadastro(){
 
@@ -17,7 +18,6 @@ const [data, setData] = useState();
 const [hora, setHora] = useState();
 const [foto, setFoto] = useState();
 const usuarioEmail = useSelector(state => state.usuarioEmail);
-
 
 function cadastrar(){
     setMsgTipo(null);
@@ -32,9 +32,8 @@ function cadastrar(){
     const storageRef = ref(storage,`imagens/${foto.name}`);
     uploadBytes(storageRef, foto).then((snapshot) => {
 
-
         // Add a new document in collection "eventos"
-        setDoc(doc(db, "eventos", "cadastro"), {
+        addDoc(collection(db, "eventos"), {
             Titulo: titulo,
             Tipo: tipo,
             //Description has validation because it is not mandatory
@@ -50,6 +49,7 @@ function cadastrar(){
             setMsgTipo('success');
             setCarregando(0);
         }).catch(erro=> {
+            alert(erro)
             setMsgTipo('erro');
             setCarregando(0);
         });
@@ -59,7 +59,7 @@ function cadastrar(){
     return(
         <>
         <Navbar/>
-        <div className="mt-5 mx-5">
+        <div className="mt-5 mx-5 screen mx-auto">
             <div className="row">
                 <h3 className="mx-auto font-weight-bold">Novo Evento</h3>
             </div>
@@ -87,11 +87,11 @@ function cadastrar(){
                 </div>
 
                 <div className="form-group row">
-                    <div className="col-6">
+                    <div className="col-5">
                         <label>Data:</label>
                         <input onChange={(e) => setData(e.target.value)} type="date" className="form-control"/>
                     </div>
-                    <div className="col-6">
+                    <div className="col-5">
                         <label>Hora:</label>
                         <input onChange={(e) => setHora(e.target.value)} type="time" className="form-control"/>
                     </div>
@@ -104,7 +104,7 @@ function cadastrar(){
 
                 <div className="row">
                     {
-                    carregando > 0 ? <div class="spinner-border text-danger mx-auto" role="status"><span class="visually-hidden">Loading...</span></div>
+                    carregando > 0 ? <div className="spinner-border text-danger mx-auto" role="status"><span class="visually-hidden">Loading...</span></div>
                      : <button type="button" onClick={cadastrar} className="btn btn-lg btn-block mt-3 mb-5 btn-cadastro">Publicar Evento</button>
                     }
                 </div>
