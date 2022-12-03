@@ -20,7 +20,6 @@ function Home(){
 
         if(parametro)
         {
-
             const q = query(collection(db, "eventos"), where("Usuario", "==", usuarioEmail));
 
             const querySnapshot = await getDocs(q);
@@ -63,7 +62,7 @@ function Home(){
 
             <div className="row p-5 text-center">
                 <h3 className="mx-auto pb-2">Eventos</h3>
-                <input onChange={(e)=> setPesquisa(e.target.value)} type="text" className="form-control" placeholder="Pesquisar evento pelo título"/>
+                <input onChange={(e)=> setPesquisa(e.target.value)} type="text" className="form-control" placeholder="Pesquisar evento pelo título..."/>
             </div>
             <div className="row mt-3 mx-1">
                 {eventos.map(item=><EventoCard key={item.id} id={item.id} img={item.Foto} titulo={item.Titulo} detalhes={item.Detalhes} visualizacoes={item.Visualizacoes}/>)}
