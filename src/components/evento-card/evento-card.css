@@ -24,12 +24,13 @@
 
 .card-text{
     height: 100px;
+    min-height: 47px;
     max-height: 47px;
     overflow:hidden;
 }
 
 .img-cartao{
-    max-height: 200px;
+    max-height: 150px;
     min-width: 100px;
     border-radius: 5px;
 }

@@ -1,23 +1,28 @@
 import React, {useState, useEffect} from "react";
 import './evento-detalhes.css';
-import {Link, useParams} from 'react-router-dom';
-import { faPenSquare, faCalendar, faClock, faTicket } from '@fortawesome/free-solid-svg-icons';
+import {Link, useParams, Navigate} from 'react-router-dom';
+import { faPenSquare, faCalendar, faClock, faTicket, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Navbar from "../../components/navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {db, storage} from '../../config/firebase';
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 import {ref, getDownloadURL} from "@firebase/storage";
 import { useSelector } from "react-redux";
 
 function EventoDetalhes(){
 
-const [evento, setEvento] = useState({});
-const [urlImg, setUrlImg] = useState({});
-const [carregando, setCarregando] = useState(1);
-const usuarioLogado = useSelector(state => state.usuarioEmail);
-const { id } = useParams();
+    const [evento, setEvento] = useState({});
+    const [urlImg, setUrlImg] = useState({});
+    const [carregando, setCarregando] = useState(1);
+    const [excluido, setExcluido] = useState(0);
+    const usuarioLogado = useSelector(state => state.usuarioEmail);
+    const { id } = useParams();
 
-const docRef = doc(db, "eventos", id);
+    const docRef = doc(db, "eventos", id);
+
+    useEffect(() => {
+        getDetails();
+    }, []);
 
    async function getDetails(){
         await getDoc(docRef).then(details => {
@@ -27,13 +32,16 @@ const docRef = doc(db, "eventos", id);
         });
     }
 
-    useEffect(() => {
-        getDetails();
-    }, []);
+    async function remover(){
+        await deleteDoc(docRef);
+        setExcluido(1);
+    }
 
     return(
         <>
             <Navbar/>
+
+            {excluido ? <Navigate to='/'/> : null}
             
             <div className="container-fluid">
                 {
@@ -70,6 +78,11 @@ const docRef = doc(db, "eventos", id);
                     {
                         usuarioLogado === evento.Usuario ?
                                     <Link to={`/editarevento/${id}`} className="btn-editar"><FontAwesomeIcon icon={faPenSquare} className="imageEditBtn"/></Link>
+                                    :''
+                    }
+                    {
+                        usuarioLogado === evento.Usuario ?
+                                    <button onClick={remover} className="btn-delete"><FontAwesomeIcon icon={faTrash} className="imageDeleteBtn"/></button>
                                     :''
                     }
 

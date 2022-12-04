@@ -20,11 +20,26 @@
     transition: .3s ease-in;
 }
 
+.btn-delete{
+    position: fixed;
+    bottom: 10px;
+    right: 60px;
+    color: #f21667;
+    transition: .3s ease-in;
+    border-color: transparent;
+    background-color: transparent;
+}
+
 .btn-editar i:hover{
     color:#614ea6;
 }
 
 .imageEditBtn{
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
+}
+
+.imageDeleteBtn{
+    width: 35px;
+    height: 35px;
 }
