@@ -64,12 +64,12 @@ const docRef = doc(db, "eventos", id);
 
                     <div className="row box-detalhes mt-5">
                         <h5 className="mx-auto"><strong>Detalhes do Evento</strong></h5>
-                        <p className="text-justify p-3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan urna quis vestibulum dictum. Quisque at mi eleifend, maximus nisi non, malesuada ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ullamcorper, orci id lacinia gravida, ligula libero suscipit mi, nec gravida tellus purus quis neque. Aliquam erat volutpat. Praesent fermentum quis est at efficitur. Etiam sit amet consectetur odio, sed viverra felis. In vulputate tellus ut ipsum scelerisque sodales. Cras placerat dui at mollis ornare. Mauris convallis id nulla vitae luctus. Nullam nec porttitor nisi. </p>
+                        <p className="text-justify p-3"> {evento.Detalhes} </p>
                     </div>
 
                     {
                         usuarioLogado === evento.Usuario ?
-                                    <Link to='' className="btn-editar"><FontAwesomeIcon icon={faPenSquare} className="imageEditBtn"/></Link>
+                                    <Link to={`/editarevento/${id}`} className="btn-editar"><FontAwesomeIcon icon={faPenSquare} className="imageEditBtn"/></Link>
                                     :''
                     }
 

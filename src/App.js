@@ -23,6 +23,7 @@ function App() {
           <Route exact path="/recuperarsenha" element={<UsuarioRecuperarSenha/>} />
           <Route exact path="/eventocadastro" element={<EventoCadastro/>} />
           <Route exact path="/eventodetalhes/:id" element={<EventoDetalhes/>} />
+          <Route exact path="/editarevento/:id" element={<EventoCadastro/>} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -30,7 +30,7 @@ const firebaseConfig = {
 };
 */
 
-/*
+
 const firebaseConfig = {
   apiKey: "AIzaSyCitsmWlSG2VqnCa7qlEA8RyojHXOSvuXM",
   authDomain: "eventos3-afea6.firebaseapp.com",
@@ -39,9 +39,9 @@ const firebaseConfig = {
   messagingSenderId: "337109204869",
   appId: "1:337109204869:web:b783d512b0cb593d47ceec"
 };
-*/
 
 
+/*
 const firebaseConfig = {
   apiKey: "AIzaSyBR3O3EFTcRgzZ4vz1b0MkiUKblxme_OXE",
   authDomain: "eventos-4.firebaseapp.com",
@@ -50,7 +50,7 @@ const firebaseConfig = {
   messagingSenderId: "226870283224",
   appId: "1:226870283224:web:d8ac70b773ec325ad9c0ad"
 };
-
+*/
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
