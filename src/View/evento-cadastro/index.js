@@ -20,17 +20,22 @@ const [fotoNova, setFotoNova] = useState();
 const [fotoAtual, setFotoAtual] = useState();
 const usuarioEmail = useSelector(state => state.usuarioEmail);
 const { id } = useParams();
-const docRef = doc(db, "eventos", id);
+
+
 
 async function getDetails(){
-    await getDoc(docRef).then(res => {
-       setTitulo(res.data().Titulo)
-       setTipo(res.data().Tipo)
-       setDetalhes(res.data().Detalhes)
-       setData(res.data().Data)
-       setHora(res.data().Hora)
-       setFotoAtual(res.data().Foto)
-    });
+    if(id){
+        const docRef = doc(db, "eventos", id);
+
+        await getDoc(docRef).then(res => {
+        setTitulo(res.data().Titulo)
+        setTipo(res.data().Tipo)
+        setDetalhes(res.data().Detalhes)
+        setData(res.data().Data)
+        setHora(res.data().Hora)
+        setFotoAtual(res.data().Foto)
+        });
+    }
 }
 
 useEffect(() => {
@@ -38,6 +43,8 @@ useEffect(() => {
 }, []);
 
 function atualizar(){
+    const docRef = doc(db, "eventos", id);
+
     setMsgTipo(null);
     setCarregando(1);
     
@@ -73,6 +80,7 @@ function atualizar(){
 }
 
 function cadastrar(){
+
     setMsgTipo(null);
     setCarregando(1);
     
