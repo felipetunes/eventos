@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.colorBack{
+    background-color:#eeecec9d;
+    font-family: 'Open Sans';
+}
+
+.pesquisaEvento{
+    margin: 5px 20px 5px 20px;
+    width: 420px;
+}
+
+.titlePage{
+    font-size: 18px;
+    max-height: 26px;
+    overflow: hidden;
+    font-weight: 1000;
+    margin-left: 10px;
+}
+
+.btnTypeEvent{
+    width: 75px;
+    height: 20px;
+    max-width: 120px;
+    background-color: #e0e1e1;
+    margin-top: 10px;
+    margin-right: 10px;
+    vertical-align:middle;
+    justify-content: center;
+    line-height: 2px;
+    text-align: center; 
+    font-size: 12px;
+}
+
+.btnTypeEvent:hover{
+    background-color:#51f8aa;
+    width: 79px;
+    transition: .4s ease-in-out;
+}
+
+.filterCategory{
+    flex-wrap: nowrap;
+    margin-left: 12px;
+}

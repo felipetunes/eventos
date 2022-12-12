@@ -1,0 +1,8 @@
+.panelPhoto{
+    position: absolute;
+    z-index: 100;
+    background-color: aliceblue;
+    width: 400px;
+    height: 320px;
+    padding: 15px;
+}

@@ -1,25 +1,36 @@
 .rodape-card{
-    color:#614ea6;
-    height:35px;
+    color:#fff;
+    height:25px;
     display:flex;
     justify-content: space-between;
+    margin: 0px 30px 0px 0px;
 }
 
 .btn-detalhes:hover{
-    background-color:#f21667;
-    color: #fff;
+    background-color:#51f8aa;
+    color: rgb(86, 86, 86);
 }
 
 .btn-detalhes{
     color: white;
-    background-color:#614ea6;
+    background-color:#cacacb;
     white-space: nowrap;
+    border-radius: 0px 10px 0px 0px;
+    width: 120px;
+    height: 25px;
+    font-size: 10px;
 }
 
 .viewers{
     display:flex;
-    grid-gap:  6px;
+    grid-gap:  5px;
     align-items: center;
+    color: #cacacb;
+    font-size: 14px;
+}
+
+.texts-card{
+    margin: 15px;
 }
 
 .card-text{
@@ -27,20 +38,40 @@
     min-height: 47px;
     max-height: 47px;
     overflow:hidden;
+    font-size: 11px;
 }
 
 .img-cartao{
-    max-height: 120px;
-    min-width: 120px;
-    border-radius: 5px;
+    max-height: 140px;
+    min-height: 140px;
+    min-width: 100%;
+    max-width: 100%;
+    box-shadow:-9px -9px 18px #ffffff;
+}
+
+.cbody{
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color:#fff;
+    margin: 5px;
+    margin-bottom: 20px;
+    box-shadow:  9px 9px 18px #bebebe,
+    -9px -9px 18px #ffffff;
+    min-width: 250px;
 }
 
 .card-body{
-    max-width: 95%;
-    overflow: hidden;
+    padding: 0;
 }
 
 .tituloEvento{
-    max-height: 26px;
+    font-size: 15px;
+    max-height: 20px;
     overflow: hidden;
+    font-weight: 600;
+}
+
+.visu{
+    margin-top: -1px;
 }

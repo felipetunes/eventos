@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {db, storage} from '../../config/firebase';
-import { useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 import Navbar from "../../components/navbar";
-import { collection, doc, addDoc, getDoc, setDoc } from "firebase/firestore";
+import {collection, doc, addDoc, getDoc, setDoc } from "firebase/firestore";
 import {ref, uploadBytes} from "@firebase/storage";
 import './evento-cadastro.css'
 
@@ -20,7 +20,6 @@ const [fotoNova, setFotoNova] = useState();
 const [fotoAtual, setFotoAtual] = useState();
 const usuarioEmail = useSelector(state => state.usuarioEmail);
 const { id } = useParams();
-
 
 
 async function getDetails(){
@@ -40,6 +39,22 @@ async function getDetails(){
 
 useEffect(() => {
     getDetails();
+
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
 }, []);
 
 function atualizar(){
@@ -84,7 +99,7 @@ function cadastrar(){
     setMsgTipo(null);
     setCarregando(1);
     
-    if(!fotoAtual || !titulo || !tipo || !hora || !data)
+    if(!titulo || !tipo || !hora || !data)
     {
         setMsgTipo('nullField');
         setCarregando(0);
@@ -125,15 +140,15 @@ function cadastrar(){
                 <h3 className="mx-auto font-weight-bold">{id ? "Atualizar Evento" : "Novo Evento"}</h3>
             </div>
 
-            <form>
+            <form className="needs-validation" novalidate>
                 <div className="form-group">
                     <label>Titulo:</label>
-                    <input type="text" className="form-control" value={titulo && titulo} onChange={(e) => setTitulo(e.target.value)}/>
+                    <input required type="text" className="form-control is-invalid" value={titulo && titulo} onChange={(e) => setTitulo(e.target.value)}/>
                 </div>
 
                 <div className="form-group">
                     <label>Tipo do Evento</label>
-                    <select className="form-control" onChange={(e) => setTipo(e.target.value)} value={tipo && tipo}>
+                    <select required className="form-control is-invalid" onChange={(e) => setTipo(e.target.value)} value={tipo && tipo}>
                         <option>-- Selecione um tipo --</option>
                         <option>Festa</option>
                         <option>Teatro</option>
@@ -150,23 +165,23 @@ function cadastrar(){
                 <div className="form-group row">
                     <div className="col-5">
                         <label>Data:</label>
-                        <input onChange={(e) => setData(e.target.value)} type="date" className="form-control" value={data && data}/>
+                        <input required onChange={(e) => setData(e.target.value)} type="date" className="form-control is-invalid" value={data && data}/>
                     </div>
                     <div className="col-5">
                         <label>Hora:</label>
-                        <input onChange={(e) => setHora(e.target.value)} type="time" className="form-control" value={hora && hora}/>
+                        <input required onChange={(e) => setHora(e.target.value)} type="time" className="form-control is-invalid" value={hora && hora}/>
                     </div>
                 </div>
 
                 <div className="form-group">
                         <label>Upload da Foto:</label>
-                        <input onChange={(e) => setFotoNova(e.target.files[0])} type="file" className="form-control"/>
+                        <input required onChange={(e) => setFotoNova(e.target.files[0])} type="file" className="form-control is-invalid"/>
                     </div>
 
                 <div className="row">
                     {
                     carregando > 0 ? <div className="spinner-border text-danger mx-auto" role="status"><span className="visually-hidden">Loading...</span></div>
-                     : <button type="button"  onClick={id? atualizar : cadastrar} className="btn btn-lg btn-block mt-3 mb-5 btn-cadastro"> {id ? "Atualizar Evento" : "Publicar Evento"}</button>
+                     : <button type="submit"  onClick={id? atualizar : cadastrar} className="btn btn-lg btn-block mt-3 mb-5 btn-cadastro"> {id ? "Atualizar Evento" : "Publicar Evento"}</button>
                     }
                 </div>
             </form>

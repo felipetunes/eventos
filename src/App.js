@@ -22,6 +22,7 @@ function App() {
           <Route exact path="/eventos/:parametro" element={<Home />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/novousuario" element={<NovoUsuario/>} />
+          <Route exact path="/novousuario/:id" element={<NovoUsuario/>} />
           <Route exact path="/recuperarsenha" element={<UsuarioRecuperarSenha/>} />
           <Route exact path="/eventocadastro" element={<EventoCadastro/>} />
           <Route exact path="/eventodetalhes/:id" element={<EventoDetalhes/>} />

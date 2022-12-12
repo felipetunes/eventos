@@ -43,7 +43,7 @@ function EventoDetalhes(){
 
             {excluido ? <Navigate to='/'/> : null}
             
-            <div className="container-fluid">
+            <div>
                 {
                 carregando ? <div class="spinner-border text-danger mt-5" role="status"><span class="visually-hidden"></span></div>
                 :
@@ -52,7 +52,7 @@ function EventoDetalhes(){
                         <img src={urlImg} className="img-banner" alt="Banner" />
                     </div>
 
-                    <div className="row mt-5 d-flex justifify-content-around">
+                    <div className="row mt-5">
                         <div className="col-md-3 col-sm-12 box-info p-3 my-2">
                             <h5><strong>Tipo</strong></h5>
                             <FontAwesomeIcon icon={faTicket}/>

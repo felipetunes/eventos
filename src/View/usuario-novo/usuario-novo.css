@@ -16,3 +16,61 @@
 .invalidField{
     border-color: red;
 }
+
+.userEditPhoto{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+}
+
+.imageEditUser{
+    position:absolute;
+    width: 15px;
+    height: 15px;
+    color: rgb(0, 0, 0);
+    border-radius: 100%;
+    z-index: 2;
+    margin-top: 7px;
+    margin-left: -7px;
+}
+
+.back{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #1aebb6;
+    height: 30px;
+    width: 30px;
+    color: white;
+    z-index: 1;
+    border-radius: 100%;
+    border: #fff;
+    cursor: pointer;
+}
+
+.pen{
+    margin-top: 24px;
+    margin-left: 119px;
+}
+
+.cam{
+    margin-top: 65px;
+    margin-left: 88px;
+}
+
+.webcam{
+    position: absolute;
+}
+
+.showEyeUser{
+    position: absolute;
+    top: 100px;
+    right: 10px;
+    z-index: 1000;
+    cursor:pointer;
+}
+
+.inputsLoginUser{
+    position:relative;
+ }

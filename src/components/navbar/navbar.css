@@ -1,6 +1,64 @@
 .userPhoto{
-    border-radius: 5px;
-    width: 29px;
-    height: 29px;
+    border-radius: 50%;
+    user-select: none;
+    border: 0;
+    width: 32px;
+    height: 32px;
     margin-right: 2%;
+}
+
+userPhoto:hover cardLogin{
+    background-color: black;
+}
+
+.cardLoginVisible{
+    height: 200px;
+    width: 150px;
+    position:absolute;
+    right:0;
+    margin-right: 40px;
+    margin-top: -7px;
+    border-radius: 10px;
+    padding-left: 25px;
+    color:black;
+    box-shadow: rgba(0, 0, 0, 0.171) 1.95px 1.95px 2.6px;
+    visibility:visible;
+    z-index: 10;
+    background-color: #fff;
+    transition: .3s ease-in;
+}
+
+.cardLoginInvisible{
+    height: 200px;
+    width: 150px;
+    position:absolute;
+    right:0;
+    margin-right: 40px;
+    margin-top: 5px;
+    border-radius: 10px;
+    padding-left: 25px;
+    color:black;
+    box-shadow: rgba(0, 0, 0, 0.267) 1.95px 1.95px 2.6px;
+    visibility: collapse;
+    transition: .3s ease-in-out;
+}
+
+.accountUser{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    justify-content:flex-end;
+    width: 100px;
+    float: right;
+    margin-right: 3%;
+    right: 0;
+}
+
+.nameUser{
+    vertical-align: middle;
+    margin-top: 5px;
+    margin-right: 13px;
+    white-space: nowrap;
+    max-width: 100px;
+    width: 100px;
 }

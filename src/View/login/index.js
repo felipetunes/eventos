@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import './login.css';
 import {Link, Navigate} from 'react-router-dom';
 import firebase from '../../config/firebase';
+import {db, requestForToken} from '../../config/firebase';
+import { collection, getDoc, query, where } from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
@@ -19,8 +21,17 @@ function Login(){
     const [msg, setMsg] = useState();
     const [carregando, setCarregando] = useState();
     const [passwordType, setPasswordType] = useState("password");
-
+    const [name, setDisplayName] = useState("");
+ 
     const dispatch = useDispatch();
+
+    async function getDisplayName(){
+
+        const q = query(collection(db, "user"), where("Email", "==", email));
+        await getDoc(q).then(res => {
+            setDisplayName(res.data().Nome)
+        });
+    }
 
     const Sign = (e) => {
         e.preventDefault();
@@ -32,11 +43,11 @@ function Login(){
 
         signInWithEmailAndPassword(auth, email, senha)
         .then((userCredential) => {
-
           // Signed in
           setCarregando(0);
           setMsgTipo('success')
-          dispatch({type: 'LOG_IN', usuarioEmail: email, photoURL: userCredential.user.photoURL});
+          getDisplayName();
+          dispatch({type: 'LOG_IN', usuarioEmail: email, photoURL: userCredential.user.photoURL, displayName: name});
           // ...
         })
         .catch(erro => {
@@ -58,7 +69,6 @@ function Login(){
         });
     }
 
-
     const SignWithGoogle = (e) => {
         e.preventDefault();
 
@@ -69,11 +79,10 @@ function Login(){
         const provider = new GoogleAuthProvider();
 
         signInWithPopup(auth, provider)
-        .then((res) => {
-
+        .then((userCredential) => {
             setCarregando(0);
             setMsgTipo('success')
-            dispatch({type: 'LOG_IN', usuarioEmail: res.user.email, photoURL: res.user.photoURL});
+            dispatch({type: 'LOG_IN', usuarioEmail: userCredential.user.email, photoURL: userCredential.user.photoURL, displayName: userCredential.user.displayName});
           // ...
         }).catch((error) => {
             setMsg(error.message);
@@ -82,6 +91,7 @@ function Login(){
 
     const SignWithFacebook = (e) => {
         e.preventDefault();
+
         setCarregando(1);
         setMsgTipo(null);
         
@@ -89,11 +99,10 @@ function Login(){
         const provider = new FacebookAuthProvider();
 
         signInWithPopup(auth, provider)
-        .then((res) => {
-
+        .then((userCredential) => {
             setCarregando(0);
             setMsgTipo('success')
-            dispatch({type: 'LOG_IN', usuarioEmail: res.user.email, photoURL: res.user.photoURL});
+            dispatch({type: 'LOG_IN', usuarioEmail: userCredential.user.email, photoURL: userCredential.user.photoURL, displayName: userCredential.user.displayName});
 
         })
         .catch((error) => {
@@ -116,12 +125,11 @@ function Login(){
         <div className="background" />
             <div className="login-content d-flex align-items-center">
 
-            
                 {useSelector(state => state.usuarioLogado) > 0 ? <Navigate to='/' /> : null}
                 
                 <form className="form-signin mx-auto text-center">
                     <div className="text-center mb-4">
-                    <h1 className="h3 mb-3 text-black font-weight-bold">Login</h1>
+                    <h1 className="h3 mb-3 text-black font-weight-bold fontLogin">Login</h1>
                     </div>
 
                     <button className="googleBtn btn-login-social mt-3" type="button" onClick={SignWithGoogle}>
