@@ -19,7 +19,7 @@ const firebaseConfig = {
   messagingSenderId: "762440793921",
   appId: "1:762440793921:web:55e589850fe1451e9a6bc0"
 };
-
+*/
 const firebaseConfig = {
   apiKey: "AIzaSyArIhcKeb9iUt6ppiCXZmieZ1OLIABk_KI",
   authDomain: "eventos2-5b0d5.firebaseapp.com",
@@ -29,6 +29,7 @@ const firebaseConfig = {
   appId: "1:849734484205:web:b691abe99d84852175cce4"
 };
 
+/*
 const firebaseConfig = {
   apiKey: "AIzaSyCitsmWlSG2VqnCa7qlEA8RyojHXOSvuXM",
   authDomain: "eventos3-afea6.firebaseapp.com",
@@ -38,7 +39,7 @@ const firebaseConfig = {
   appId: "1:337109204869:web:b783d512b0cb593d47ceec"
 };
 
-*/
+
 const firebaseConfig = {
   apiKey: "AIzaSyBR3O3EFTcRgzZ4vz1b0MkiUKblxme_OXE",
   authDomain: "eventos-4.firebaseapp.com",
@@ -47,7 +48,7 @@ const firebaseConfig = {
   messagingSenderId: "226870283224",
   appId: "1:226870283224:web:d8ac70b773ec325ad9c0ad"
 };
-
+*/
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -57,8 +58,6 @@ const db = getFirestore(app)
 const auth = getAuth(app)
 const storage = getStorage(app);
 const analytics = getAnalytics(app);
-
-
 
 export const requestForToken = () => {
   return getToken(messaging, { vapidKey: 'BAU1yQmvV2ofUBICW7SGGVSBIgqLjNxnPEo7SvNbr4eMBl1pnAtinJLlQ5GpHBxm2woGM_X076KBwnVrr1cRUSI' })

@@ -39,11 +39,11 @@ function Navbar(){
 }
             <a className="navbar-brand"><Link className="nav-link" to="/">Eventos</Link></a>
             {
-              <>
-            <div className="accountUser">
-                <h6 className="nameUser">{displayName}</h6>
-                <img src={photoURL} onMouseEnter={changeStyleOn} onMouseOut={changeStyleOff} className="userPhoto"/>
-            </div>
+            <>
+              <div className="accountUser">
+                  <h6 className="nameUser">{displayName}</h6>
+                  <img src={photoURL} referrerpolicy="no-referrer" onMouseEnter={changeStyleOn} onMouseOut={changeStyleOff} className="userPhoto"/>
+              </div>
             </>
             }
             <div className="collapse navbar-collapse" id="navbarNav">

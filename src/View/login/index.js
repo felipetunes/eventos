@@ -21,17 +21,8 @@ function Login(){
     const [msg, setMsg] = useState();
     const [carregando, setCarregando] = useState();
     const [passwordType, setPasswordType] = useState("password");
-    const [name, setDisplayName] = useState("");
  
     const dispatch = useDispatch();
-
-    async function getDisplayName(){
-
-        const q = query(collection(db, "user"), where("Email", "==", email));
-        await getDoc(q).then(res => {
-            setDisplayName(res.data().Nome)
-        });
-    }
 
     const Sign = (e) => {
         e.preventDefault();
@@ -46,8 +37,7 @@ function Login(){
           // Signed in
           setCarregando(0);
           setMsgTipo('success')
-          getDisplayName();
-          dispatch({type: 'LOG_IN', usuarioEmail: email, photoURL: userCredential.user.photoURL, displayName: name});
+          dispatch({type: 'LOG_IN', usuarioEmail: email, photoURL: userCredential.user.photoURL, displayName: userCredential.user.displayName});
           // ...
         })
         .catch(erro => {

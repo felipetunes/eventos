@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from "react";
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {db, storage} from '../../config/firebase';
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import Navbar from "../../components/navbar";
-import { collection, doc, addDoc, getDoc, setDoc } from "firebase/firestore";
+import {collection, doc, addDoc, getDoc, setDoc } from "firebase/firestore";
 import {ref, uploadBytes} from "@firebase/storage";
 import './evento-cadastro.css'
-import {Button, Form} from 'react-bootstrap';
+import {Button, Form, Alert} from 'react-bootstrap';
 
 function EventoCadastro(){
 
@@ -219,9 +219,10 @@ function register(){
                 </div>
             </Form>
             <div className="msg-login text-center my-1">
-                        {msgTipo === 'success' && <span style={{visibility: "visible"}}> Cadastro realizado! </span>}
-                        {msgTipo === 'erro' && <span style={{visibility: "visible"}}> Algo deu errado... </span>}
-                        {msgTipo === 'nullField' && <span style={{visibility: "visible"}}> Preencha todos os campos! </span>}
+                        {msgTipo === 'success' && <Alert variant="success" style={{visibility: "visible"}}> Cadastro realizado! </Alert>}
+                        {msgTipo === 'erro' && <Alert variant="danger" style={{visibility: "visible"}}> Algo deu errado... </Alert>}
+                        {msgTipo === 'nullField' && <Alert variant="danger" style={{visibility: "visible"}}> Preencha todos os campos! </Alert>}
+
             </div>
         </div>
         </>
