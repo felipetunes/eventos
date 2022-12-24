@@ -26,7 +26,6 @@ function Login(){
 
     const Sign = (e) => {
         e.preventDefault();
-
         setCarregando(1);
         setMsgTipo(null);
 

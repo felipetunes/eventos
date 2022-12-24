@@ -32,7 +32,7 @@ const [urlImagem, setUrlImagem] = useState();
                             <Link to={'/eventodetalhes/' + id} className="btn btn-sm btn-detalhes">+ detalhes</Link>
                             <div className="viewers">
                                 <FontAwesomeIcon icon={faEye} />
-                                <span className="visu">{visualizacoes}</span>
+                                <span className="visu">{visualizacoes ? visualizacoes:0}</span>
                             </div>
                         </div>
                     </Card.Body>

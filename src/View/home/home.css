@@ -34,7 +34,6 @@
 
 .btnTypeEvent:hover{
     background-color:#51f8aa;
-    width: 79px;
     transition: .4s ease-in-out;
 }
 

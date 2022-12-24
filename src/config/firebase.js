@@ -10,7 +10,7 @@ import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 
-/*
+
 const firebaseConfig = {
   apiKey: "AIzaSyAplOxk19O6OFNiuqRQVRlSeE2PROJEfMw",
   authDomain: "eventos-8a368.firebaseapp.com",
@@ -19,7 +19,7 @@ const firebaseConfig = {
   messagingSenderId: "762440793921",
   appId: "1:762440793921:web:55e589850fe1451e9a6bc0"
 };
-*/
+/*
 const firebaseConfig = {
   apiKey: "AIzaSyArIhcKeb9iUt6ppiCXZmieZ1OLIABk_KI",
   authDomain: "eventos2-5b0d5.firebaseapp.com",
@@ -29,7 +29,7 @@ const firebaseConfig = {
   appId: "1:849734484205:web:b691abe99d84852175cce4"
 };
 
-/*
+
 const firebaseConfig = {
   apiKey: "AIzaSyCitsmWlSG2VqnCa7qlEA8RyojHXOSvuXM",
   authDomain: "eventos3-afea6.firebaseapp.com",

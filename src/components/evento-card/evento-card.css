@@ -40,7 +40,8 @@
     min-height: 140px;
     min-width: 100%;
     max-width: 100%;
-    box-shadow:-9px -9px 18px #ffffff;
+    background-color: #51f8aa;
+    filter: grayscale(.75) contrast(1.3);
 }
 
 .cbody{
@@ -55,10 +56,20 @@
     min-width: 250px;
 }
 
+.cbody:hover{
+    box-shadow:  15px 15px 15px #bebebe,
+    -9px -9px 18px #ffffff;
+    margin-top: -1px;
+}
+
+.cbody:hover .img-cartao{
+    filter: grayscale(.0);
+    transition: .15s ease-in;
+ }
+
 .cbody:hover .btn-detalhes{
    margin-top: 0px;
    transition: .3s ease-in;
-
 }
 
 .btn-detalhes{
