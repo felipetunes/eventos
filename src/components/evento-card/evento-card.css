@@ -11,22 +11,16 @@
     color: rgb(86, 86, 86);
 }
 
-.btn-detalhes{
-    color: white;
-    background-color:#cacacb;
-    white-space: nowrap;
-    border-radius: 0px 10px 0px 0px;
-    width: 120px;
-    height: 25px;
-    font-size: 10px;
-}
-
 .viewers{
     display:flex;
     grid-gap:  5px;
     align-items: center;
     color: #cacacb;
     font-size: 14px;
+}
+
+.viewers:hover{
+    color: black;
 }
 
 .texts-card{
@@ -59,6 +53,23 @@
     box-shadow:  9px 9px 18px #bebebe,
     -9px -9px 18px #ffffff;
     min-width: 250px;
+}
+
+.cbody:hover .btn-detalhes{
+   margin-top: 0px;
+   transition: .3s ease-in;
+
+}
+
+.btn-detalhes{
+    color: white;
+    background-color:#cacacb;
+    white-space: nowrap;
+    border-radius: 0px 10px 0px 0px;
+    width: 120px;
+    height: 25px;
+    font-size: 10px;
+    margin-top: 30px;
 }
 
 .card-body{
