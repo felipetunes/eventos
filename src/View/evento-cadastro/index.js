@@ -99,8 +99,9 @@ function register(){
         setMsgTipo('nullField');
         setCarregando(0);
     }
-    
+
     const storageRef = ref(storage,`imagens/${fotoNova.name}`);
+
     uploadBytes(storageRef, fotoNova).then((snapshot) => {
 
         // Add a new document in collection "eventos"
@@ -115,6 +116,7 @@ function register(){
             Usuario: usuarioEmail,
             Visualizacoes:0,
             Publico:1,
+            Favorite:false,
             criacao: new Date()
         }).then(()=> {
             setMsgTipo('success');
@@ -176,7 +178,7 @@ function register(){
                             type="date"
                             placeholder="Data"
                             defaultValue={data && data}
-                            onChange={(e) => setHora(e.target.value)}
+                            onChange={(e) => setData(e.target.value)}
                         />
                     <Form.Control.Feedback type="invalid">
                         Por favor escolha uma data.

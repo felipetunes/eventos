@@ -2,11 +2,16 @@
     color:#fff;
     height:25px;
     display:flex;
-    justify-content: space-between;
-    margin: 0px 30px 0px 0px;
+    width: 240px;
+    justify-content:space-between;
+}
+
+.rodape-items{
+    display:flex;
 }
 
 .btn-detalhes:hover{
+    float: right;
     background-color:#51f8aa;
     color: rgb(86, 86, 86);
 }
@@ -17,6 +22,7 @@
     align-items: center;
     color: #cacacb;
     font-size: 14px;
+    margin-left: 25px;
 }
 
 .viewers:hover{
@@ -96,4 +102,8 @@
 
 .visu{
     margin-top: -1px;
+}
+
+.starOn{
+    color:gold;
 }

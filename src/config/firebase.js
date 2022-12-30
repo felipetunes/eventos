@@ -10,7 +10,7 @@ import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 
-
+/*
 const firebaseConfig = {
   apiKey: "AIzaSyAplOxk19O6OFNiuqRQVRlSeE2PROJEfMw",
   authDomain: "eventos-8a368.firebaseapp.com",
@@ -19,7 +19,7 @@ const firebaseConfig = {
   messagingSenderId: "762440793921",
   appId: "1:762440793921:web:55e589850fe1451e9a6bc0"
 };
-/*
+
 const firebaseConfig = {
   apiKey: "AIzaSyArIhcKeb9iUt6ppiCXZmieZ1OLIABk_KI",
   authDomain: "eventos2-5b0d5.firebaseapp.com",
@@ -30,7 +30,6 @@ const firebaseConfig = {
 };
 
 
-const firebaseConfig = {
   apiKey: "AIzaSyCitsmWlSG2VqnCa7qlEA8RyojHXOSvuXM",
   authDomain: "eventos3-afea6.firebaseapp.com",
   projectId: "eventos3-afea6",
@@ -38,7 +37,6 @@ const firebaseConfig = {
   messagingSenderId: "337109204869",
   appId: "1:337109204869:web:b783d512b0cb593d47ceec"
 };
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyBR3O3EFTcRgzZ4vz1b0MkiUKblxme_OXE",
@@ -49,6 +47,16 @@ const firebaseConfig = {
   appId: "1:226870283224:web:d8ac70b773ec325ad9c0ad"
 };
 */
+
+const firebaseConfig = {
+apiKey: "AIzaSyBdUs10QT8TWMyHVDDW8hzTJqKPaL0wrMo",
+  authDomain: "eventos5.firebaseapp.com",
+  projectId: "eventos5",
+  storageBucket: "eventos5.appspot.com",
+  messagingSenderId: "706670462424",
+  appId: "1:706670462424:web:ab7a274267fc53e7ce5ead",
+  measurementId: "G-6MFN2W94TX"
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

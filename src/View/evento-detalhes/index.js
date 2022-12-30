@@ -43,12 +43,12 @@ function EventoDetalhes(){
 
             {excluido ? <Navigate to='/'/> : null}
             
-            <div>
+            <div className="container">
                 {
                 carregando ? <div class="spinner-border text-danger mt-5" role="status"><span class="visually-hidden"></span></div>
                 :
                 <div>
-                    <div className="row">
+                    <div>
                         <img src={urlImg} className="img-banner" alt="Banner" />
                     </div>
 

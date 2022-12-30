@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import './home.css';
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import Navbar from "../../components/navbar";
 import EventoCard from "../../components/evento-card";
-import {db, requestForToken} from '../../config/firebase';
+import {db} from '../../config/firebase';
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useSelector } from "react-redux";
 
@@ -81,8 +81,8 @@ function Home(){
                             <button onClick={() => setEventSelected('Evento')} className="btn btnTypeEvent" type="button">Evento</button>
                         </div>
                     </div>
-                    <div className="row mx-1">
-                        {eventos.map(item=><EventoCard key={item.id} id={item.id} img={item.Foto} titulo={item.Titulo} detalhes={item.Detalhes} visualizacoes={item.Visualizacoes}/>)}
+                    <div className="row flex-nowrap mx-1">
+                        {eventos.map(item=><EventoCard key={item.id} id={item.id} img={item.Foto} titulo={item.Titulo} detalhes={item.Detalhes} visualizacoes={item.Visualizacoes} favorite={item.Favorite}/>)}
                     </div>
                 </div>
         </div>
